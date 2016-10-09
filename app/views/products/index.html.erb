@@ -11,12 +11,14 @@ $(function() {
     var id = $(this).data("id");
     $.get("/products/" + id + "/description", function(description) {
       $.get("/products/" + id + "/inventory", function(inventory) {
-        var inventoryText = "<strong>Available</strong>";
-        if(inventory === "false"){
-          inventoryText = "<strong>Sold Out</strong>";
-        }
-        var descriptionText = "<p>" + description + "</p><p>" + inventoryText + "</p>";
-        $("#product-" + id).html(descriptionText);
+        $.get("/products/" + id + "/price", function(price) {
+          var inventoryText = "<strong>Available</strong>";
+          if(inventory === "false"){
+            inventoryText = "<strong>Sold Out</strong>";
+          }
+          var descriptionText = "<p>" + "Description: " + description + "</p><p>" + "Availability: " + inventoryText + "</p><p>" + "Price: " + price + "</p>";
+          $("#product-" + id).html(descriptionText);
+        });
       });
     });
   });

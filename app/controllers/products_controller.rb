@@ -25,6 +25,10 @@ class ProductsController < ApplicationController
     render plain: product.inventory > 0 ? true : false
   end
 
+  def price 
+    product = Product.find_by(id: params[:id])
+    render plain: product.price.to_s
+  end
 
   def description
     product = Product.find(params[:id])
