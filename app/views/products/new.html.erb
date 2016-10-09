@@ -1,1 +1,11 @@
-
+<%= form_for @product do |f| %>
+  <%= f.label :name, 'Product name' %>
+  <%= f.text_field :name %>
+  <%= f.label :price, 'Product price' %>
+  <%= f.text_field :price %>
+  <%= f.label :inventory, 'Product inventory' %>
+  <%= f.text_field :inventory %>
+  <%= f.label :description, 'Product description' %>
+  <%= f.text_field :description %>
+  <%= f.submit 'Submit', :disable_with => 'Submiting...' %>
+<% end %>
